@@ -1,0 +1,6 @@
+{
+  "name": "Teleprompter Pro",
+  "description": "Professional Teleprompter, Camera Studio with live recording & Hindi support, and floating overlay teleprompter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
