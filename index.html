@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Teleprompter Pro — Camera Studio & Floating Teleprompter</title>
+    <meta name="description" content="Professional Teleprompter with Camera Studio, Hindi Devanagari text support, and floating overlay for video creators." />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#00e5ff" />
+    <link rel="icon" type="image/png" href="./icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        background-color: #080c14;
+        color: #f8fafc;
+        font-family: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      /* Custom scrollbars */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.6);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00e5ff;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

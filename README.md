@@ -4,7 +4,20 @@ Teleprompter Pro is a professional, production-grade Android application built u
 
 ---
 
-## 🚀 Features
+## 🌐 Dual Platform: Android Native App + Vercel Web PWA
+
+This repository is built to run simultaneously in **two modes**:
+1. **Android Application (`.apk` / emulator):** Native Jetpack Compose UI, CameraX video recording, Android system overlay service (`SYSTEM_ALERT_WINDOW`), and offline Room database.
+2. **Web Application & PWA (Vercel / Netlify / Chrome / Safari):** Responsive React + Vite + TypeScript application with IndexedDB, `requestAnimationFrame` auto-scrolling, Web Speech Voice Follow, and Web `MediaRecorder` camera recording.
+
+### Deploying to Vercel
+1. Connect your repository to **Vercel** (`https://vercel.com`).
+2. Vercel automatically detects `package.json`, `vercel.json`, and `vite.config.ts`.
+3. Build Settings are pre-configured:
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+4. Tap **Deploy** — your live website URL will be immediately online without any 404 errors!
 
 ### 1. Script Management & Home Screen
 - **Room Database Local Storage:** 100% offline-first persistent storage using Room DB. Scripts are preserved across restarts and uninstalls.

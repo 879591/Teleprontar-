@@ -46,12 +46,16 @@ import com.example.ui.theme.StudioDarkSurface
 import com.example.ui.theme.TextMuted
 import com.example.ui.theme.TextPrimary
 
+import com.example.ui.screens.WebStudioScreen
+import androidx.compose.material.icons.filled.Language
+
 sealed class Screen {
     object Home : Screen()
     data class Editor(val script: Script?) : Screen()
     data class Player(val script: Script) : Screen()
     data class Camera(val script: Script) : Screen()
     data class InAppFloating(val script: Script) : Screen()
+    object WebStudio : Screen()
     object Settings : Screen()
 }
 
@@ -81,7 +85,7 @@ fun TeleprompterApp() {
         )
     }
 
-    val showBottomNav = currentScreen is Screen.Home || currentScreen is Screen.Settings
+    val showBottomNav = currentScreen is Screen.Home || currentScreen is Screen.Settings || currentScreen is Screen.WebStudio
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -139,6 +143,21 @@ fun TeleprompterApp() {
                             indicatorColor = StudioCyan.copy(alpha = 0.2f)
                         ),
                         modifier = Modifier.testTag("nav_floating_tab")
+                    )
+
+                    NavigationBarItem(
+                        selected = currentScreen is Screen.WebStudio,
+                        onClick = { currentScreen = Screen.WebStudio },
+                        icon = { Icon(Icons.Default.Language, contentDescription = "Web PWA") },
+                        label = { Text("Web Studio") },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = StudioCyan,
+                            selectedTextColor = StudioCyan,
+                            unselectedIconColor = TextMuted,
+                            unselectedTextColor = TextMuted,
+                            indicatorColor = StudioCyan.copy(alpha = 0.2f)
+                        ),
+                        modifier = Modifier.testTag("nav_web_studio_tab")
                     )
 
                     NavigationBarItem(
@@ -216,6 +235,12 @@ fun TeleprompterApp() {
                         script = screen.script,
                         onNavigateBack = { currentScreen = Screen.Home }
                     )
+                }
+                is Screen.WebStudio -> {
+                    BackHandler {
+                        currentScreen = Screen.Home
+                    }
+                    WebStudioScreen(onNavigateBack = { currentScreen = Screen.Home })
                 }
                 is Screen.Settings -> {
                     BackHandler {
